@@ -85,18 +85,18 @@
         id: int,
         external_id: string,
         product_template: {
-            id: int, 						// What is the variant id?
-            siblings: [						// What are the compatible sibling variant ids?
+            id: int, 				// What is the variant id?
+            siblings: [				// What are the compatible sibling variant ids?
                 int, int, int
             ],
             engraving_variant_id: int (associative engraving variant id, can be self) | null (not available)
             buyer_uploads: boolean,
             base_cost: decimal (USD),
             artwork_mask_src: cdn-url.    	// What is the public cdn url for the white mask applied to artwork to show the printable area? 
-            title: string, 					// What is the suggested variant title?
-            position: int, 					// What is the suggested position with respect to the other sibling variants for this product?
+            title: string, 			// What is the suggested variant title?
+            position: int, 			// What is the suggested position with respect to the other sibling variants for this product?
             optimized_height: int,  		// What height the artwork will be constrained?
-            optimized_width: int, 			// What width the artwork will be constained?
+            optimized_width: int, 		// What width the artwork will be constained?
             upload_min_height: int, 		// What is the suggested min height (not enforced)
             upload_min_width: int,  		// What is the suggested min width (not enforced)
             metafields: {
@@ -108,12 +108,12 @@
             transformations: [
 	    	{
                     id: int,
-                    label: string, 				// A short descriptor
-                    renders: boolean, 			// Is it a render or just a plain image?
-                    default: boolean, 			// Is this the considered a standard choice for the variant?
-                    position: int, 				// Suggested position with respect to the other transformations for the product
+                    label: string, 		// A short descriptor
+                    renders: boolean, 		// Is it a render or just a plain image?
+                    default: boolean, 		// Is this the considered a standard choice for the variant?
+                    position: int, 		// Suggested position with respect to the other transformations for the product
                     dark_available: boolean, 
-                    output_format: string, 		// What is the default output format?
+                    output_format: string, 	// What is the default output format?
                     output_quality: integer, 	// What is the default output quality?
                     published_at: ISO 8601 date,
                     created_at: ISO 8601 date,
