@@ -32,7 +32,7 @@ and
 
 #### POST `Sku` REQUEST:
 
-> If you already have an artwork_id, then transport will occur much faster by specifying it instead of artwork data. However, it may make sense to pass your artwork along when you create your Sku, creating both an artwork object and a sku object in one request. Furthermore, you may optionally specify a transformation_id to receive back a Sku object, Artwork object and a render all with one request.
+> If you already have an artwork_id, then transport will occur much faster by specifying it instead of artwork data. However, it may make sense to pass your artwork along when you create your Sku, creating both an `Artwork` object and a `Sku` object in one request. Furthermore, you may optionally specify a transformation_id to receive back a `Artwork` object, `Sku` object and a `transformation_src` (or render) all with one request.
 
 ```
 {
