@@ -198,8 +198,7 @@
 
 ```
 {
-    artwork_id: base64encoded-png-or-jpg,
-    artwork: string required
+    artwork: base64encoded-png-or-jpg
 }
 ```
 
@@ -208,10 +207,7 @@
 > Or fetched.
 
 ```
-{
-    artwork_id: int required,
-    base64: boolean optional, default false (cdn url)
-}
+// no payload
 ```
 
 #### GET|PUT|POST `Artwork` __RESPONSE__:
@@ -266,17 +262,15 @@
 
 > Contextually, it should be understood that `ProductTemplate` resources are always for a __variant__!
 
-### GET: 	https://api.shineon.com/v1/product_templates/{id}
+### GET: 	https://api.shineon.com/v1/product_templates/{product_template_id}
 
 #### GET `ProductTemplate` REQUEST:
 
 ```
-{
-    product_template_id: int
-}
+// no payload
 ```
 
-#### GET `ProductTemplate` RESPONSE: 
+#### GET `ProductTemplate` __RESPONSE__: 
 
 ```
 {
@@ -329,7 +323,7 @@
 // no payload
 ```
 
-#### GET `ProductTemplate` RESPONSE (multiple): 
+#### GET `ProductTemplate` __RESPONSE__ (multiple): 
 
 ```
 {
@@ -385,6 +379,15 @@
 `created_at_min` param or equivalent is necessary.
 
 `partner` param or equivalent for filtering only jewelry orders is suggested.
+
+### GET https://shineon-partner-domain.com/api/orders/{order_id}
+
+```
+{
+    created_at_min: '2018-09-10 08:00:00' // e.g. the last time we synced
+    partner: 'ShineOn'
+}
+```
 
 
 
