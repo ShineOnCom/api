@@ -22,8 +22,9 @@
 ### POST: 	https://api.shineon.com/v1/skus
 ### PUT:  	https://api.shineon.com/v1/skus/{sku_id}
 ### GET:  	https://api.shineon.com/v1/skus/{sku_id}
-### DELETE: https://api.shineon.com/v1/skus/{sku_id}
-### GET:    https://api.shineon.com/v1/skus not described below, `skus` array returned w/product_template_id and artwork_id instead of object, accepts `page` (default: 1), `per_page` (default:15, max:250), `product_template_id` (default: null), `created_at_min` (default: null), `updated_at_min` (default: null)
+### DELETE: 	https://api.shineon.com/v1/skus/{sku_id}
+
+### GET:    	https://api.shineon.com/v1/skus
 
 > An sku object identfies the artwork captured when the seller created the design, and the product (variant) template used. Skus should not be generated until the artwork is FINAL (this means sending a cropped version of the desired FINAL artwork).
 
@@ -61,23 +62,7 @@
 > Must include sku id only
 
 ```
-{
-    sku: {
-        id: int required
-    }
-}
-```
-
-## DELETE `Sku` REQUEST: 
-
-> Must include sku id only
-
-```
-{
-    sku: {
-        id: int required
-    }
-}
+// no payload
 ```
 
 #### GET|PUT|POST `Sku` __RESPONSE__:
@@ -149,6 +134,12 @@
 }
 ```
 
+## DELETE `Sku` REQUEST: 
+
+```
+// no query string
+```
+
 #### DELETE `Sku` __RESPONSE__:
 
 > Will return 404 if Sku was already deleted.
@@ -161,6 +152,38 @@
     }
 }
 ```
+
+## GET `Sku` REQUEST (multiple): 
+
+> No query string is also acceptable
+
+```
+?page=1&per_page=250
+```
+
+#### GET `Sku` __RESPONSE__ (multiple):
+
+The `skus` array will be returned with the product_template_id and artwork_id instead of objects.
+
+> Base
+
+```
+{
+    skus: [
+        {
+	    // see above for example
+        }
+    ]
+}
+```
+
+Params accepted: 
+
+- `page` (default: 1), 
+- `per_page` (default:15, max:250), 
+- `product_template_id` (default: null), 
+- `created_at_min` (default: null), 
+- `updated_at_min` (default: null)
 
 
 
@@ -204,10 +227,10 @@
 
 #### GET `Artwork` REQUEST:
 
-> Or fetched.
+> Or get a single artwork object. Query string optional.
 
 ```
-// no payload
+?base64=1
 ```
 
 #### GET|PUT|POST `Artwork` __RESPONSE__:
@@ -232,11 +255,17 @@
 }
 ```
 
+## DELETE `Artwork` REQUEST: 
+
+```
+// no query string
+```
+
 #### DELETE `Artwork` __RESPONSE__:
 
 > Will return 404 if Artwork was already deleted.
 
-> Will return 405 if Artwork has previously sold.
+> Will return 405 if Artwork has previously been sold.
 
 > Will return 406 if Artwork has Skus that still exist.
 
@@ -267,7 +296,7 @@
 #### GET `ProductTemplate` REQUEST:
 
 ```
-// no payload
+// no query string necessary
 ```
 
 #### GET `ProductTemplate` __RESPONSE__: 
@@ -320,7 +349,7 @@
 #### GET `ProductTemplate` REQUEST (multiple):
 
 ```
-// no payload
+// no query string necessary
 ```
 
 #### GET `ProductTemplate` __RESPONSE__ (multiple): 
@@ -372,10 +401,7 @@
 #### GET `Orders` REQUEST (multiple)
 
 ```
-{
-    created_at_min: '2018-09-10 08:00:00' // e.g. the last time we synced
-    partner: 'ShineOn'
-}
+?created_at_min=2018-09-10T08%3A00%3A00%2B00%3A00&partner=shineon
 ```
 
 `created_at_min` param or equivalent is necessary.
@@ -395,14 +421,14 @@
 > Fetching a single order (with your id) is also useful for us for adhoc, debugging, and informational requests.
 
 ```
-// no payload
+// no query string
 ```
 
 #### GET `Orders` __RESPONSE__
 
 ```
 {
-    // your orders response with line items and `external_sku_id` or equivalent
+    // your orders array response, each with line items with `external_sku_id` property or equivalent
 }
 ```
 
