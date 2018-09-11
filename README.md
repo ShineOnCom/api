@@ -17,16 +17,18 @@
 
 # Skus API
 
+An sku object identfies the artwork captured when the seller created the design, and the product (variant) template used. Skus should not be generated until the artwork is FINAL (this means sending a cropped version of the desired FINAL artwork).
+
 ## Endpoints (draft) for `Sku` CRUD and optional rendering
 
 ### POST: 	https://api.shineon.com/v1/skus
 ### PUT:  	https://api.shineon.com/v1/skus/{sku_id}
 ### GET:  	https://api.shineon.com/v1/skus/{sku_id}
 ### DELETE: 	https://api.shineon.com/v1/skus/{sku_id}
-
+and
 ### GET:    	https://api.shineon.com/v1/skus
 
-> An sku object identfies the artwork captured when the seller created the design, and the product (variant) template used. Skus should not be generated until the artwork is FINAL (this means sending a cropped version of the desired FINAL artwork).
+## Examples
 
 #### POST `Sku` REQUEST:
 
@@ -202,6 +204,8 @@ Params accepted:
 ### GET: 	https://api.shineon.com/v1/artwork/{artwork_id}
 ### DELETE: 	https://api.shineon.com/v1/artwork/{artwork_id}
 
+## Examples
+
 #### POST `Artwork` REQUEST:
 
 > The purpose of this endpoint is to generate an artwork object. Artwork supplied will automatically be constrained to the optimized dimensions specified by the respective product template. An artwork object should only be created when the seller is satisfied with how their design will look when printed.
@@ -287,11 +291,13 @@ Params accepted:
 
 # ProductTemplates API
 
+Contextually, it should be understood that `ProductTemplate` resources are always for a __variant__!
+
 ## Endpoints (draft) for Product Template data
 
-> Contextually, it should be understood that `ProductTemplate` resources are always for a __variant__!
-
 ### GET: 	https://api.shineon.com/v1/product_templates/{product_template_id}
+
+## Examples
 
 #### GET `ProductTemplate` REQUEST:
 
