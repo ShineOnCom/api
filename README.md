@@ -408,5 +408,6 @@
 
 # Order Creation (partner side)
 
-> Alternatively, we can expose endpoints where you can create orders on our platform. This would enable you to leverage our endpoints in one of your own platform events (e.g. order created or order paid) and then fire an API request at our servers so it gets fulfilled. If this sort of implementation is preferential, please contact [`dan@shineon.com`](mailto:dan@shineon.com)
+Alternatively, we can expose endpoints where you can create orders on our platform. This would enable you to leverage our endpoints in one of your own platform events (e.g. order created or order paid) and then fire an API request at our servers so it gets fulfilled. 
 
+If this sort of implementation is preferential, please contact [`dan@shineon.com`](mailto:dan@shineon.com). However, if you already have an API we can leverage with our sync script / pattern, that is both more efficient and less dev time.
