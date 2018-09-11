@@ -1,10 +1,10 @@
 # Topics
 
-- API Integrations (admin notes)
-- Skus API
-- Artwork API
-- ProductTemplates API
-- Order Synchronization / Fulfillment Workflow
+- [API Integrations (admin notes)](https://github.com/ShineOnCom/integrations/blob/master/README.md#api-integrations-admin-notes)
+- [Skus API](https://github.com/ShineOnCom/integrations/blob/master/README.md#skus-api)
+- [Artwork API](https://github.com/ShineOnCom/integrations/blob/master/README.md#artwork-api)
+- [ProductTemplates API](https://github.com/ShineOnCom/integrations/blob/master/README.md#producttemplates-api)
+- [Order Synchronization / Fulfillment Workflow](https://github.com/ShineOnCom/integrations/blob/master/README.md#order-synchronization--fulfillment-workflow)
 
 # API Integrations (admin notes)
 
