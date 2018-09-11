@@ -1,4 +1,12 @@
-# ShineOn API Integrations (admin notes)
+# Topics
+
+- API Integrations (admin notes)
+- Skus API
+- Artwork API
+- ProductTemplates API
+- Order Synchronization / Fulfillment Workflow
+
+# API Integrations (admin notes)
 
 - API Affiliate Admin account necessary for all ShineOn Partners
 - API access and usage instructions
