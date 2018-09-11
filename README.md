@@ -59,7 +59,7 @@ and
 }
 ```
 
-## GET `Sku` REQUEST: 
+#### GET `Sku` REQUEST: 
 
 > Must include sku id only
 
@@ -136,7 +136,7 @@ and
 }
 ```
 
-## DELETE `Sku` REQUEST: 
+#### DELETE `Sku` REQUEST: 
 
 ```
 // no query string
@@ -155,7 +155,7 @@ and
 }
 ```
 
-## GET `Sku` REQUEST (multiple): 
+#### GET `Sku` REQUEST (multiple): 
 
 > No query string is also acceptable
 
@@ -259,7 +259,7 @@ Params accepted:
 }
 ```
 
-## DELETE `Artwork` REQUEST: 
+#### DELETE `Artwork` REQUEST: 
 
 ```
 // no query string
@@ -296,6 +296,7 @@ Contextually, it should be understood that `ProductTemplate` resources are alway
 ## Endpoints (draft) for Product Template data
 
 ### GET: 	https://api.shineon.com/v1/product_templates/{product_template_id}
+### GET: 	https://api.shineon.com/v1/product_templates
 
 ## Examples
 
@@ -349,8 +350,6 @@ Contextually, it should be understood that `ProductTemplate` resources are alway
     }
 }
 ```
-
-### GET: 	https://api.shineon.com/v1/product_templates
 
 #### GET `ProductTemplate` REQUEST (multiple):
 
