@@ -361,7 +361,7 @@
         - Only the first 20 characters will be accepted, except for Cross, `engraving_line1` is a max of 2 chars.
 	- Font for engravings will be Tangerine, except Cross, `engraving_line1`, which is SpartanMB-Extra-Bold.
 	- Emojis are not accepted.
-    - Order line items that have buyer uploads (if any) must have `buyer_upload_artwork` property with base64 encoded image data.
+    - Order line items that have buyer uploads (if any) must have `buyer_upload_artwork_src` property with cdn-url with fetchable data from our api.shineon.com hostname, e.g. [`file_get_contents`](http://www.php.net/manual/en/function.file-get-contents.php).
 - Internally at ShineOn
     - Invoices are generated for new orders
     - Notifications are sent for any problematic orders
