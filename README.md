@@ -4,6 +4,7 @@
 - [Skus API](https://github.com/ShineOnCom/integrations/blob/master/README.md#skus-api)
 - [Artwork API](https://github.com/ShineOnCom/integrations/blob/master/README.md#artwork-api)
 - [ProductTemplates API](https://github.com/ShineOnCom/integrations/blob/master/README.md#producttemplates-api)
+- [Transformations API](https://github.com/ShineOnCom/integrations/blob/master/README.md#transformations-api)
 - [Order Synchronization / Fulfillment Workflow](https://github.com/ShineOnCom/integrations/blob/master/README.md#order-synchronization--fulfillment-workflow)
 
 # API Integrations (admin notes)
@@ -368,6 +369,14 @@ Contextually, it should be understood that `ProductTemplate` resources are alway
     ]
 }
 ```
+
+# Transformations API
+
+Wanting to retrieve even more incredible images? 
+
+The `Skus`, `Artwork` and `ProductTemplate` APIs are somewhat the MVP for building skus, remitting artwork and fetching a single render for your sku when you do so. 
+
+We intend on making additional endpoints explicitly for fetching additional jewelry renders for your variants. If this is of interest, please let us know more about the nature of your implementation, [dan@shineon.com](mailto:dan@shineon.com).
 
 
 
