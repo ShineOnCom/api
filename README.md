@@ -369,7 +369,7 @@
 
 ### GET https://shineon-partner-domain.com/api/orders
 
-#### GET `Orders` REQUEST
+#### GET `Orders` REQUEST (multiple)
 
 ```
 {
@@ -382,7 +382,7 @@
 
 `partner` param or equivalent for filtering only jewelry orders is suggested.
 
-#### GET `Orders` __RESPONSE__
+#### GET `Orders` __RESPONSE__ (multiple)
 
 ```
 {
@@ -398,6 +398,15 @@
 // no payload
 ```
 
+#### GET `Orders` __RESPONSE__
 
+```
+{
+    // your orders response with line items and `external_sku_id` or equivalent
+}
+```
 
+# Order Creation (partner side)
+
+> Alternatively, we can expose endpoints where you can create orders on our platform. This would enable you to leverage our endpoints in one of your own platform events (e.g. order created or order paid) and then fire an API request at our servers so it gets fulfilled. If this sort of implementation is preferential, please contact [`dan@shineon.com`](mailto:dan@shineon.com)
 
