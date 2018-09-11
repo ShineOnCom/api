@@ -124,7 +124,7 @@
         },
         artwork: {
             id: int,
-            src: 24hr-signed-s3-cdn-url, // This is signed to protect seller IP. You can store on your end if that makes sense.
+            src: 24hr-signed-s3-cdn-url, 	// This is signed to protect seller IP. You can store on your end if that makes sense.
             src_mimetype: string,
             src_bytes: string,
             original_src: 24hr-signed-s3-cdn-url, // This is signed to protect seller IP. You can store on your end if that makes sense.
@@ -212,13 +212,13 @@
 {  
     artwork: {
         id: int,
-        src: 24hr-signed-s3-cdn-url, 			// This is signed to protect seller IP. You can store on your end if that makes sense.
+        src: 24hr-signed-s3-cdn-url, 		// This is signed to protect seller IP. You can store on your end if that makes sense.
         src_mimetype: string,
         src_bytes: string,
         original_src: 24hr-signed-s3-cdn-url, 	// This is signed to protect seller IP. You can store on your end if that makes sense.
         original_src_mimetype: string,
         original_src_bytes: int,
-        alpha: boolean, 						// Were any alpha (transparent pixels) detected?
+        alpha: boolean, 			// Were any alpha (transparent pixels) detected?
         transformation_src: (string|null) base64_encoded optimized jpg,
         created_at: ISO 8601 date,
         updated_at: ISO 8601 date
