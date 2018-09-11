@@ -25,12 +25,12 @@
 
 ```
 {
-	sku: {
-		product_template_id: int required,
-	    (artwork_id|artwork): (int|string), either artwork_id or artwork (png or jpg) is required
-	    external_id: int or string required (gearbubble variant or campaign id),
-	    transformation_id: int optional 		// This is really a bonus if you want to accomplish your task with 1 API request.
-	}
+    sku: {
+        product_template_id: int required,
+        (artwork_id|artwork): (int|string), either artwork_id or artwork (png or jpg) is required
+        external_id: int or string required (gearbubble variant or campaign id),
+        transformation_id: int optional 		// This is really a bonus if you want to accomplish your task with 1 API request.
+    }
 }
 ```
 
@@ -40,11 +40,11 @@
 
 ```
 {
-	sku: {
-		id: int required,
-		artwork: string optional,
-		external_id: (int|string) optional
-	}
+    sku: {
+        id: int required,
+        artwork: string optional,
+        external_id: (int|string) optional
+    }
 }
 ```
 
@@ -54,9 +54,9 @@
 
 ```
 {
-	sku: {
-		id: int required
-	}
+    sku: {
+        id: int required
+    }
 }
 ```
 
@@ -66,9 +66,9 @@
 
 ```
 {
-	sku: {
-		id: int required
-	}
+    sku: {
+        id: int required
+    }
 }
 ```
 
@@ -81,60 +81,62 @@
 
 ```
 {
-	sku: {
-		id: int,
-		external_id: string,
-		product_template: {
-			id: int, 						// What is the variant id?
-			siblings: [						// What are the compatible sibling variant ids?
-				int, int, int
-			],
-			engraving_variant_id: int (associative engraving variant id, can be self) | null (not available)
-			buyer_uploads: boolean,
-			base_cost: decimal (USD),
-			artwork_mask_src: cdn-url.    	// What is the public cdn url for the white mask applied to artwork to show the printable area? 
-			title: string, 					// What is the suggested variant title?
-			position: int, 					// What is the suggested position with respect to the other sibling variants for this product?
-			optimized_height: int,  		// What height the artwork will be constrained?
-			optimized_width: int, 			// What width the artwork will be constained?
-			upload_min_height: int, 		// What is the suggested min height (not enforced)
-			upload_min_width: int,  		// What is the suggested min width (not enforced)
-			metafields: {
-			    type: string,
-				shape: string,
-				metal: string,
-				engravings: int,
-		    },
-			transformations: [
-				id: int,
-				label: string, 				// A short descriptor
-				renders: boolean, 			// Is it a render or just a plain image?
-				default: boolean, 			// Is this the considered a standard choice for the variant?
-				position: int, 				// Suggested position with respect to the other transformations for the product
-				dark_available: boolean, 
-				output_format: string, 		// What is the default output format?
-				output_quality: integer, 	// What is the default output quality?
-				published_at: ISO 8601 date,
-				created_at: ISO 8601 date,
-				updated_at: ISO 8601 date
-			],
-			published_at: ISO 8601 date
-		},
-		artwork: {
-		    id: int,
-		    src: 24hr-signed-s3-cdn-url, // This is signed to protect seller IP. You can store on your end if that makes sense.
-		    src_mimetype: string,
-		    src_bytes: string,
-		    original_src: 24hr-signed-s3-cdn-url, // This is signed to protect seller IP. You can store on your end if that makes sense.
-		    original_src_mimetype: string,
-		    original_src_bytes: int,
-		    alpha: boolean, // Were any alpha (transparent pixels) detected?
-		    created_at: ISO 8601 date,
-		    updated_at: ISO 8601 date
-		},
-		transformation_src: (string|null) base64_encoded optimized jpg,
-		created_at: ISO 8601 date,
-		updated_at: ISO 8601 date
+    sku: {
+        id: int,
+        external_id: string,
+        product_template: {
+            id: int, 						// What is the variant id?
+            siblings: [						// What are the compatible sibling variant ids?
+                int, int, int
+            ],
+            engraving_variant_id: int (associative engraving variant id, can be self) | null (not available)
+            buyer_uploads: boolean,
+            base_cost: decimal (USD),
+            artwork_mask_src: cdn-url.    	// What is the public cdn url for the white mask applied to artwork to show the printable area? 
+            title: string, 					// What is the suggested variant title?
+            position: int, 					// What is the suggested position with respect to the other sibling variants for this product?
+            optimized_height: int,  		// What height the artwork will be constrained?
+            optimized_width: int, 			// What width the artwork will be constained?
+            upload_min_height: int, 		// What is the suggested min height (not enforced)
+            upload_min_width: int,  		// What is the suggested min width (not enforced)
+            metafields: {
+                type: string,
+                shape: string,
+                metal: string,
+                engravings: int,
+            },
+            transformations: [
+	    	{
+                    id: int,
+                    label: string, 				// A short descriptor
+                    renders: boolean, 			// Is it a render or just a plain image?
+                    default: boolean, 			// Is this the considered a standard choice for the variant?
+                    position: int, 				// Suggested position with respect to the other transformations for the product
+                    dark_available: boolean, 
+                    output_format: string, 		// What is the default output format?
+                    output_quality: integer, 	// What is the default output quality?
+                    published_at: ISO 8601 date,
+                    created_at: ISO 8601 date,
+                    updated_at: ISO 8601 date
+		}
+            ],
+            published_at: ISO 8601 date
+        },
+        artwork: {
+            id: int,
+            src: 24hr-signed-s3-cdn-url, // This is signed to protect seller IP. You can store on your end if that makes sense.
+            src_mimetype: string,
+            src_bytes: string,
+            original_src: 24hr-signed-s3-cdn-url, // This is signed to protect seller IP. You can store on your end if that makes sense.
+            original_src_mimetype: string,
+            original_src_bytes: int,
+            alpha: boolean, // Were any alpha (transparent pixels) detected?
+            created_at: ISO 8601 date,
+            updated_at: ISO 8601 date
+        },
+        transformation_src: (string|null) base64_encoded optimized jpg,
+        created_at: ISO 8601 date,
+        updated_at: ISO 8601 date
     }
 }
 ```
@@ -146,9 +148,9 @@
 
 ```
 {
-	sku: {
-		id: int
-	}
+    sku: {
+        id: int
+    }
 }
 ```
 
@@ -208,19 +210,19 @@
 
 ```
 {  
-	artwork: {
-	    id: int,
-	    src: 24hr-signed-s3-cdn-url, 			// This is signed to protect seller IP. You can store on your end if that makes sense.
-	    src_mimetype: string,
-	    src_bytes: string,
-	    original_src: 24hr-signed-s3-cdn-url, 	// This is signed to protect seller IP. You can store on your end if that makes sense.
-	    original_src_mimetype: string,
-	    original_src_bytes: int,
-	    alpha: boolean, 						// Were any alpha (transparent pixels) detected?
-	    transformation_src: (string|null) base64_encoded optimized jpg,
-	    created_at: ISO 8601 date,
-	    updated_at: ISO 8601 date
-	}
+    artwork: {
+        id: int,
+        src: 24hr-signed-s3-cdn-url, 			// This is signed to protect seller IP. You can store on your end if that makes sense.
+        src_mimetype: string,
+        src_bytes: string,
+        original_src: 24hr-signed-s3-cdn-url, 	// This is signed to protect seller IP. You can store on your end if that makes sense.
+        original_src_mimetype: string,
+        original_src_bytes: int,
+        alpha: boolean, 						// Were any alpha (transparent pixels) detected?
+        transformation_src: (string|null) base64_encoded optimized jpg,
+        created_at: ISO 8601 date,
+        updated_at: ISO 8601 date
+    }
 }
 ```
 
@@ -232,9 +234,9 @@
 
 ```
 {
-	sku: {
-		id: int
-	}
+    sku: {
+        id: int
+    }
 }
 ```
 
@@ -254,7 +256,7 @@
 #### GET ProductTemplate REQUEST:
 
 ```
-	// no payload
+    // no payload
 ```
 
 ## GET: 	https://api.shineon.com/v1/product_templates/{id}
@@ -263,6 +265,6 @@
 
 ```
 {
-	product_template_id: int required
+    product_template_id: int required
 }
 ```
