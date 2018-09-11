@@ -369,6 +369,8 @@
 
 ### GET https://shineon-partner-domain.com/api/orders
 
+#### GET `Orders` REQUEST
+
 ```
 {
     created_at_min: '2018-09-10 08:00:00' // e.g. the last time we synced
@@ -380,13 +382,20 @@
 
 `partner` param or equivalent for filtering only jewelry orders is suggested.
 
-### GET https://shineon-partner-domain.com/api/orders/{order_id}
+#### GET `Orders` __RESPONSE__
 
 ```
 {
-    created_at_min: '2018-09-10 08:00:00' // e.g. the last time we synced
-    partner: 'ShineOn'
+    // your orders response with line items and `external_sku_id` or equivalent
 }
+```
+
+### GET https://shineon-partner-domain.com/api/orders/{order_id}
+
+> Fetching a single order (with your id) is also useful for us for adhoc, debugging, and informational requests.
+
+```
+// no payload
 ```
 
 
