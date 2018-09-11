@@ -351,11 +351,17 @@
 
 # Order Synchronization / Fulfillment Workflow
 
-> The srder synchronization docs describes proposed path towards ShineOn automatically synchronizing orders with our fulfillment system.
+> The order synchronization docs describes proposed path towards ShineOn automatically synchronizing orders with our fulfillment system.
 
-- ShineOn receives api token from partner
+- ShineOn is provided an api token from partner with scopes for Orders and Fulfillments resources.
 - ShineOn makes hourly GET requests on partner's API Orders resource
 - ShineOn synchronizes any new jewelry orders from partner
+    - Order line items must contain `external_sku_id` (int|string) property, all other line items will be ignored.
+    - Order line items that have engraving (if any) must have `engraving_line1`, `engraving_line2` properties.
+        - Only the first 20 characters will be accepted, except for Cross, `engraving_line1` is a max of 2 chars.
+	- Font for engravings will be Tangerine, except Cross, `engraving_line1`, which is SpartanMB-Extra-Bold.
+	- Emojis are not accepted.
+    - Order line items that have buyer uploads (if any) must have `buyer_upload_artwork` property with base64 encoded image data.
 - Internally at ShineOn
     - Invoices are generated for new orders
     - Notifications are sent for any problematic orders
@@ -377,6 +383,7 @@
 ```
 
 `created_at_min` param or equivalent is necessary.
+
 `partner` param or equivalent for filtering only jewelry orders is suggested.
 
 
