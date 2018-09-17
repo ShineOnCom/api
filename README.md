@@ -39,7 +39,7 @@ and
 {
     sku: {
         product_template_id: int required,
-        (artwork_id|artwork): (int|string), either artwork_id or artwork (png or jpg) is required
+        (artwork_id|artwork|artwork_src): (int|string), either artwork_id or artwork (png or jpg) is required
         external_id: int or string required (gearbubble variant or campaign id),
         transformation_id: int optional 		// This is really a bonus if you want to accomplish your task with 1 API request.
     }
@@ -214,7 +214,7 @@ Params accepted:
 
 ```
 {
-    artwork: base64encoded-png-or-jpg,
+    (artwork|artwork_src): base64encoded-png-or-jpg,
     product_template_id: int required,
     transformation_id: optional
 }
