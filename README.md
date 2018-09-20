@@ -135,6 +135,9 @@ and
 	    src_mimetype: '(image/png|image/png)'
 	    src_bytes: int,
 	    transformation: {
+	        product_template: {
+		   ...
+		},
 	        ...
 	    }
 	},
@@ -265,6 +268,9 @@ Params accepted:
 	    src_mimetype: '(image/png|image/png)'
 	    src_bytes: int,
 	    transformation: {
+	        product_template: {
+		   ...
+		},
 	        ...
 	    }
 	},
