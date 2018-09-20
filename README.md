@@ -33,7 +33,7 @@ and
 
 #### POST `Sku` REQUEST:
 
-> If you already have an artwork_id, then transport will occur much faster by specifying it instead of artwork data. However, it may make sense to pass your artwork along when you create your Sku, creating both an `Artwork` object and a `Sku` object in one request. Furthermore, you may optionally specify a transformation_id to receive back a `Artwork` object, `Sku` object and a `transformation_src` (or render) all with one request.
+> If you already have an artwork_id, then transport will occur much faster by specifying it instead of artwork data. However, it may make sense to pass your artwork along when you create your Sku, creating both an `Artwork` object and a `Sku` object in one request. Furthermore, you may optionally specify a transformation_id to receive back a `Artwork` object, `Sku` object and a `transformation` (with render) all with one request.
 
 ```
 {
@@ -130,7 +130,14 @@ and
             created_at: ISO 8601 date,
             updated_at: ISO 8601 date
         },
-        transformation_src: (string|null) base64_encoded optimized jpg,
+        render: {
+	    src: (string|null) base64_encoded optimized jpg,
+	    src_mimetype: '(image/png|image/png)'
+	    src_bytes: int,
+	    transformation: {
+	        ...
+	    }
+	},
         created_at: ISO 8601 date,
         updated_at: ISO 8601 date
     }
@@ -253,7 +260,14 @@ Params accepted:
         original_src_mimetype: string,
         original_src_bytes: int,
         alpha: boolean, 			// Were any alpha (transparent pixels) detected?
-        transformation_src: (string|null) base64_encoded optimized jpg,
+        render: {
+	    src: (string|null) base64_encoded optimized jpg,
+	    src_mimetype: '(image/png|image/png)'
+	    src_bytes: int,
+	    transformation: {
+	        ...
+	    }
+	},
         created_at: ISO 8601 date,
         updated_at: ISO 8601 date
     }
