@@ -1,11 +1,11 @@
 # Topics
 
 - [API Integrations (admin notes)](https://github.com/ShineOnCom/integrations/blob/master/README.md#api-integrations-admin-notes)
+- [Orders API](https://github.com/ShineOnCom/integrations/blob/master/README.md#orders-api)
 - [Skus API](https://github.com/ShineOnCom/integrations/blob/master/README.md#skus-api)
 - [Artwork API](https://github.com/ShineOnCom/integrations/blob/master/README.md#artwork-api)
 - [ProductTemplates API](https://github.com/ShineOnCom/integrations/blob/master/README.md#producttemplates-api)
 - [Transformations API](https://github.com/ShineOnCom/integrations/blob/master/README.md#transformations-api)
-- [Order Synchronization / Fulfillment Workflow](https://github.com/ShineOnCom/integrations/blob/master/README.md#order-synchronization--fulfillment-workflow)
 
 # API Integrations (admin notes)
 
@@ -15,6 +15,141 @@
 - Viewing orders that have synchronized
 - Access to our CS tools
 - Viewing payment due
+
+
+
+
+# Orders API
+
+## Example Endpoints
+
+> Here is a description of endpoints ShineOn can leverage to synchronize your orders and send back tracking information.
+
+### GET https://shineon-partner-domain.com/api/orders
+
+#### GET `Orders` REQUEST (multiple)
+
+... options
+
+#### GET `Orders` __RESPONSE__ (multiple)
+
+> Sample of a complete Orders Response.
+
+```
+{
+  "orders": [
+    {
+     "id": 450789469,
+      "source_id": "fhwdgads",
+      "source_url": null,
+      "email": "bob.norman@hostmail.com",
+      "number": 1,
+      "note": null,
+      "test": false,
+      "total_price": "409.94",
+      "subtotal_price": "398.00",
+      "total_weight": 0,
+      "total_tax": "11.94",
+      "currency": "USD",
+      "name": "#1001",
+      "reference": "fhwdgads",
+      "phone": "+557734881234",
+      "order_number": 1001,
+      "created_at": "2008-01-10T11:00:00-05:00",
+      "updated_at": "2008-01-10T11:00:00-05:00",
+      "cancelled_at": null,
+      "cancel_reason": null,
+      "line_items": [
+        {
+          "id": 518995019,
+          "variant_id": 49148385,
+          "title": "IPod Nano - 8gb",
+          "quantity": 1,
+          "base_price": "19.00",
+          "price": "199.00",
+          "currency_code": "USD",
+          "sku": "IPOD2008RED",
+          "variant_title": "red",
+          "product_id": 632910392,
+          "name": "IPod Nano - 8gb - red",
+          "properties": [],
+          "grams": 200,
+          "fulfillment_id": null
+        }
+      ],
+      "billing_address": {
+        "first_name": "Bob",
+        "address1": "Chestnut Street 92",
+        "phone": "555-625-1199",
+        "city": "Louisville",
+        "zip": "40202",
+        "province": "Kentucky",
+        "country": "United States",
+        "last_name": "Norman",
+        "address2": "",
+        "company": null,
+        "name": "Bob Norman",
+        "country_code": "US",
+        "province_code": "KY"
+      },
+      "shipping_address": {
+        "first_name": "Bob",
+        "address1": "Chestnut Street 92",
+        "phone": "555-625-1199",
+        "city": "Louisville",
+        "zip": "40202",
+        "province": "Kentucky",
+        "country": "United States",
+        "last_name": "Norman",
+        "address2": "",
+        "company": null,
+        "name": "Bob Norman",
+        "country_code": "US",
+        "province_code": "KY"
+      },
+      "fulfillments": [
+        {
+          "id": 255858046,
+          "created_at": "2018-11-27T12:38:21-05:00",
+          "updated_at": "2018-11-27T12:38:21-05:00",
+          "tracking_company": null,
+          "tracking_number": "1Z2345",
+          "tracking_url": "http://wwwapps.ups.com/etracking/tracking.cgi?InquiryNumber1=1Z2345&TypeOfInquiryNumber=T&AcceptUPSLicenseAgreement=yes&submit=Track",
+          "line_items": [
+            {
+              "id": 466157049,
+              "quantity": 1,
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+### GET https://shineon-partner-domain.com/api/orders/{order_id}
+
+> Fetching a single order (with your id) is also useful for us for adhoc, debugging, and informational requests.
+
+```
+// no query string
+```
+
+#### GET `Orders` __RESPONSE__
+
+```
+{
+    // your orders array response, each with line items with `external_sku_id` property or equivalent
+}
+```
+
+
+
+---
+
+
+
 
 # Skus API
 
@@ -397,77 +532,3 @@ Wanting to retrieve even more incredible images?
 The `Skus`, `Artwork` and `ProductTemplate` APIs are somewhat the MVP for building skus, remitting artwork and fetching a single render for your sku when you do so. 
 
 We intend on making additional endpoints explicitly for fetching additional jewelry renders for your variants. If this is of interest, please let us know more about the nature of your implementation, [dan@shineon.com](mailto:dan@shineon.com).
-
-
-
-
----
-
-
-
-
-# Order Synchronization / Fulfillment Workflow
-
-> The order synchronization docs describes proposed path towards ShineOn automatically synchronizing orders with our fulfillment system.
-
-- ShineOn is provided an api token from partner with scopes for Orders and Fulfillments resources.
-- ShineOn makes hourly GET requests on partner's API Orders resource
-- ShineOn synchronizes any new jewelry orders from partner
-    - Order line items must contain `external_sku_id` (int|string) property, all other line items will be ignored.
-    - Order line items that have engraving (if any) must have `engraving_line1`, `engraving_line2` properties.
-        - Only the first 20 characters will be accepted, except for Cross, `engraving_line1` is a max of 2 chars.
-	- Font for engravings will be Tangerine, except Cross, `engraving_line1`, which is SpartanMB-Extra-Bold.
-	- Emojis are not accepted.
-    - Order line items that have buyer uploads (if any) must have `buyer_upload_artwork_src` property with cdn-url with fetchable data from our api.shineon.com hostname, e.g. [`file_get_contents`](http://www.php.net/manual/en/function.file-get-contents.php).
-- Internally at ShineOn
-    - Invoices are generated for new orders
-    - Notifications are sent for any problematic orders
-    - Work orders are generated for invoiced orders
-    - Jewelry is manufacturere and shipped.
-- ShineOn makes daily fulfillment POST requests on partner's API Fulfillments resource (tracking numbers are sent)
-
-## Example Endpoints
-
-> Here is a description of endpoints ShineOn can leverage to synchronize your orders and send back tracking information.
-
-### GET https://shineon-partner-domain.com/api/orders
-
-#### GET `Orders` REQUEST (multiple)
-
-```
-?created_at_min=2018-09-10T08%3A00%3A00%2B00%3A00&partner=shineon
-```
-
-`created_at_min` param or equivalent is necessary.
-
-`partner` param or equivalent for filtering only jewelry orders is suggested.
-
-#### GET `Orders` __RESPONSE__ (multiple)
-
-```
-{
-    // your orders response with line items and `external_sku_id` or equivalent
-}
-```
-
-### GET https://shineon-partner-domain.com/api/orders/{order_id}
-
-> Fetching a single order (with your id) is also useful for us for adhoc, debugging, and informational requests.
-
-```
-// no query string
-```
-
-#### GET `Orders` __RESPONSE__
-
-```
-{
-    // your orders array response, each with line items with `external_sku_id` property or equivalent
-}
-```
-
-# Order Creation (partner side)
-
-Alternatively, we can expose endpoints where you can create orders on our platform. This would enable you to leverage our endpoints in one of your own platform events (e.g. order created or order paid) and then fire an API request at our servers so it gets fulfilled. 
-
-If this sort of implementation is preferential, please contact [`dan@shineon.com`](mailto:dan@shineon.com). However, if you already have an API we can leverage with our sync script / pattern, that is both more efficient and less dev time.
