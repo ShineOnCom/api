@@ -39,11 +39,12 @@
 {
   "orders": [
     {
-     "id": 450789469,
+     "id": 1234,
       "source_id": "fhwdgads",
-      "source_url": null,
+      "source_url": '',
+      "source_name: "GearLaunch",
+      "source_po_number": null,
       "email": "bob.norman@hostmail.com",
-      "number": 1,
       "note": null,
       "test": false,
       "total_price": "409.94",
@@ -51,10 +52,9 @@
       "total_weight": 0,
       "total_tax": "11.94",
       "currency": "USD",
-      "name": "#1001",
+      "name": "SHINE-1234",
       "reference": "fhwdgads",
       "phone": "+557734881234",
-      "order_number": 1001,
       "created_at": "2008-01-10T11:00:00-05:00",
       "updated_at": "2008-01-10T11:00:00-05:00",
       "cancelled_at": null,
