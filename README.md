@@ -1,4 +1,8 @@
-# Topics
+# Get Started!
+## Want to automate the resale of print on-demand jewelry on your platform?
+## Contact api@shineon.com to get involved.
+
+# API Docs
 
 ## [Orders API](https://github.com/ShineOnCom/api/wiki/Orders-API)
 
