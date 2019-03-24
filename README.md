@@ -17,4 +17,4 @@ Contact api@shineon.com to get involved.
 
 ## Renders API ~ Coming Soon
 
-> Generate beautiful jewelry renders for your sellers on the fly.
+> Generate beautiful jewelry renders for your seller's products on the fly.
