@@ -14,3 +14,7 @@ Contact api@shineon.com to get involved.
 ## [Skus API](https://github.com/ShineOnCom/api/wiki/Skus-API)
 
 > The skus API enables partners to get all its available skus.
+
+## Renders API ~ Coming Soon
+
+> Generate beautiful jewelry renders on the fly.
