@@ -9,5 +9,5 @@ Docs are [available in the wiki](https://github.com/ShineOnCom/api/wiki).
 
 ## Intro Video
 
-[![Watch the video](https://shineon-cdn-public.s3.amazonaws.com/api-partners-skus-dashboard-engraving.png)](https://vimeo.com/369462670)
+[![Watch the video](https://shineon-cdn-public.s3.amazonaws.com/api.shineon.com-video.png)](https://vimeo.com/369462670)
 
