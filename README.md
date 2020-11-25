@@ -1,13 +1,5 @@
 # Get Started!
 
-> Want to automate the resale of print on-demand jewelry on your platform? 
-Contact api@shineon.com to get involved.
+> Want to automate the resale of [print on-demand jewelry](https://shineon.com/pages/sellers) on your platform? You can start sending us [CSVs right now](https://shineon.com/pages/sellers).
 
-# API Docs
-
-Docs are [available in the wiki](https://github.com/ShineOnCom/api/wiki).
-
-## Intro Video
-
-[![Watch the video](https://shineon-cdn-public.s3.amazonaws.com/api.shineon.com-video.png)](https://vimeo.com/369462670)
-
+Got something bigger in mind? We also have an API, contact our [accounts team to start conversation](mailto:invites@shineon.com) :blush: !!!
